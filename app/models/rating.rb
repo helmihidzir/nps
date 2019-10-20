@@ -13,4 +13,8 @@ class Rating < ApplicationRecord
   def detractor?
     score >= 0 && score <= 6
   end
+
+  after_create do
+    person.update(score: score)
+  end
 end
