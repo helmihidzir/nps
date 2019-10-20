@@ -12,10 +12,10 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        redis:
-          image: redis
-          ports: ['6379:6379']
-          options: --entrypoint redis-server
+      redis:
+        image: redis
+        ports: ['6379:6379']
+        options: --entrypoint redis-server
 
     steps:
       - uses: actions/checkout@v1
@@ -37,4 +37,4 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rails db:prepare
-          bundle exec rails test      
+          bundle exec rails test
